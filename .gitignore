@@ -36,6 +36,3 @@ bin/
 
 ### Oracle JDBC ###
 ojdbc8-full/
-
-### Private files ###
-/src/main/resources/application.properties
