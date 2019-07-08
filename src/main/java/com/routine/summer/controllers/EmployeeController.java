@@ -14,7 +14,7 @@ public class EmployeeController {
     }
 
     @RequestMapping(
-            value = "/employee/{id}",
+            value = "/employees/{id}",
             method = RequestMethod.GET,
             produces = "application/json")
     public String get(@PathVariable int id) throws JsonProcessingException {
@@ -22,7 +22,7 @@ public class EmployeeController {
     }
 
     @RequestMapping(
-            value = "/employee/all",
+            value = "/employees/all",
             method = RequestMethod.GET,
             produces = "application/json")
     public String getAll() throws JsonProcessingException {
