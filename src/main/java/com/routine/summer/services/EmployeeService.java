@@ -1,9 +1,10 @@
 package com.routine.summer.services;
 
+import static com.routine.summer.services.Serialization.serializeException;
+import static com.routine.summer.services.Serialization.serializeRequest;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.routine.summer.dao.EmployeeDao;
-import com.routine.summer.errors.ErrorImpl;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -11,12 +12,6 @@ import org.springframework.stereotype.Service;
 public class EmployeeService {
 
     private final EmployeeDao employeeDao;
-    private final ObjectMapper mapper = new ObjectMapper();
-
-    private String exceptionSerializeObj(Exception e) throws JsonProcessingException {
-        return mapper.writeValueAsString(
-                ErrorImpl.builder().errorMsg(e.getClass().getSimpleName()).build());
-    }
 
     public EmployeeService(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
@@ -24,17 +19,17 @@ public class EmployeeService {
 
     public String getEmployee(int id) throws JsonProcessingException, DataAccessException {
         try {
-            return mapper.writeValueAsString(employeeDao.get(id));
+            return serializeRequest(employeeDao.get(id));
         } catch (Exception e) {
-            return exceptionSerializeObj(e);
+            return serializeException(e);
         }
     }
 
     public String getAllEmployees() throws JsonProcessingException, DataAccessException {
         try {
-            return mapper.writeValueAsString(employeeDao.getAll());
+            return serializeRequest(employeeDao.getAll());
         } catch (Exception e) {
-            return exceptionSerializeObj(e);
+            return serializeException(e);
         }
     }
 }
