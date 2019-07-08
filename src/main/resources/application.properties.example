@@ -1,0 +1,5 @@
+spring.datasource.url=jdbc:oracle:thin:@//localhost:1521/xepdb1
+spring.datasource.driver-class-name=oracle.jdbc.driver.OracleDriver
+spring.datasource.username=CHANGE_ME
+spring.datasource.password=CHANGE_ME
+server.port=8080
