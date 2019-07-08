@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 @Builder(toBuilder = true)
-public @Data class Error {
+public @Data class ServiceError {
     private String name;
     private String message;
 }

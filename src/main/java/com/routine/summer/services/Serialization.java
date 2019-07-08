@@ -3,7 +3,7 @@ package com.routine.summer.services;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.routine.summer.errors.ErrorImpl;
+import com.routine.summer.entities.ServiceError;
 
 class Serialization {
 
@@ -12,7 +12,10 @@ class Serialization {
                 .writer()
                 .withRootName("error")
                 .writeValueAsString(
-                        ErrorImpl.builder().name(e.getClass().getSimpleName()).message(e.getMessage()).build());
+                        ServiceError.builder()
+                                .name(e.getClass().getSimpleName())
+                                .message(e.getMessage())
+                                .build());
     }
 
     static String serializeRequest(Object o) throws JsonProcessingException {
