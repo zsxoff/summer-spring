@@ -5,5 +5,6 @@ import lombok.Data;
 
 @Builder(toBuilder = true)
 public @Data class ErrorImpl implements Error {
-    private String errorMsg;
+    private String name;
+    private String message;
 }
