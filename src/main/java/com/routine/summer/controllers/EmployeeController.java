@@ -15,7 +15,10 @@ public class EmployeeController {
         this.employeeService = service;
     }
 
-    @RequestMapping(value = "/employee/{id}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(
+            value = "/employee/{id}",
+            method = RequestMethod.GET,
+            produces = "application/json")
     public String get(@PathVariable int id) throws JsonProcessingException {
         return employeeService.getEmployee(id);
     }
