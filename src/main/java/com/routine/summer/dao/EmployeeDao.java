@@ -1,7 +1,6 @@
 package com.routine.summer.dao;
 
 import com.routine.summer.entities.Employee;
-
 import org.springframework.dao.DataAccessException;
 
 public interface EmployeeDao {

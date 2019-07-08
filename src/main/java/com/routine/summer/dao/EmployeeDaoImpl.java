@@ -1,11 +1,8 @@
 package com.routine.summer.dao;
 
-import java.sql.ResultSet;
-
 import com.routine.summer.entities.Employee;
-
+import java.sql.ResultSet;
 import oracle.sql.DATE;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -41,6 +38,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Override
     public Employee get(int id) throws DataAccessException {
         final String sql = "SELECT * FROM employees WHERE employee_id = ?";
-        return jdbcTemplate.queryForObject(sql, new Object[]{id}, mapper);
+        return jdbcTemplate.queryForObject(sql, new Object[] {id}, mapper);
     }
 }

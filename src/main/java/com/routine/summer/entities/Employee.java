@@ -1,13 +1,10 @@
 package com.routine.summer.entities;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import com.routine.summer.entities.serialize.OracleDataToString;
-
-import oracle.sql.DATE;
-
 import lombok.Builder;
 import lombok.Data;
+import oracle.sql.DATE;
 
 @Builder(toBuilder = true)
 public @Data class Employee {
