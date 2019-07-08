@@ -14,26 +14,27 @@ import org.springframework.stereotype.Component;
 public class EmployeeDaoImpl implements EmployeeDao {
 
     private final JdbcTemplate jdbcTemplate;
-
-    private final RowMapper<Employee> mapper =
-            (ResultSet rs, int rowNum) ->
-                    Employee.builder()
-                            .employeeId(rs.getInt("EMPLOYEE_ID"))
-                            .firstName(rs.getString("FIRST_NAME"))
-                            .lastName(rs.getString("LAST_NAME"))
-                            .email(rs.getString("EMAIL"))
-                            .phoneNumber(rs.getString("PHONE_NUMBER"))
-                            .hireDate(new DATE(rs.getDate("HIRE_DATE")))
-                            .jobId(rs.getString("JOB_ID"))
-                            .salary(rs.getInt("SALARY"))
-                            .commissionPct(rs.getInt("COMMISSION_PCT"))
-                            .managerId(rs.getInt("MANAGER_ID"))
-                            .departmentId(rs.getInt("DEPARTMENT_ID"))
-                            .build();
+    private final RowMapper<Employee> mapper;
 
     @Autowired
     public EmployeeDaoImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+
+        this.mapper =
+                (ResultSet rs, int rowNum) ->
+                        Employee.builder()
+                                .employeeId(rs.getInt("EMPLOYEE_ID"))
+                                .firstName(rs.getString("FIRST_NAME"))
+                                .lastName(rs.getString("LAST_NAME"))
+                                .email(rs.getString("EMAIL"))
+                                .phoneNumber(rs.getString("PHONE_NUMBER"))
+                                .hireDate(new DATE(rs.getDate("HIRE_DATE")))
+                                .jobId(rs.getString("JOB_ID"))
+                                .salary(rs.getInt("SALARY"))
+                                .commissionPct(rs.getInt("COMMISSION_PCT"))
+                                .managerId(rs.getInt("MANAGER_ID"))
+                                .departmentId(rs.getInt("DEPARTMENT_ID"))
+                                .build();
     }
 
     @Override
