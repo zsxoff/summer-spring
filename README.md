@@ -1,9 +1,12 @@
-## Описание
+# Описание
+
 Очень интересный летний проект.
 
 ## Настройка базы данных
+
 Для проекта используется база данных Oracle Database 18.4.0-XE, запускаемая на локальной машине (*localhost*).
 Для подключения используются:
+
 * Port: **1521**
 * Service Name: **XEPDB1**
 
@@ -16,7 +19,8 @@ export DB_PASSWORD='changeme'
 ```
 
 ## Сборка и запуск проекта
-### С помощью gradlew проекта:
+
+### С помощью gradlew проекта
 
 ```bash
 git clone https://github.com/zsxoff/summer
@@ -32,7 +36,8 @@ export DB_PASSWORD='changeme'
 
 ### С помощью Docker
 
-Сборка контейнера с проектом осуществляется с помощью команды: 
+Сборка контейнера с проектом осуществляется с помощью команды:
+
 ```bash
 git clone https://github.com/zsxoff/summer
 cd summer
@@ -41,6 +46,7 @@ docker build -t "summer-routine" .
 ```
 
 Запуск осуществляется командой:
+
 ```bash
 docker run -d \
 --net=host \
@@ -51,11 +57,12 @@ summer-routine bootRun
 ```
 
 Вместо переменных окружения *${DB_USERNAME}* и *${DB_PASSWORD}* можно указывать конкретные логин и пароль в виде строк:
+
 ```bash
 ...
 -e DB_USERNAME='username' \
 -e DB_PASSWORD='password' \
 ...
-``` 
+```
 
 ***Внимание! Если вы вносите изменения в файлы проекта, необходимо пересобрать контейнер!***
