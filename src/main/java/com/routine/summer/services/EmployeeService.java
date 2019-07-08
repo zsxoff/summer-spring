@@ -11,23 +11,30 @@ import org.springframework.stereotype.Service;
 public class EmployeeService {
 
     private final EmployeeDao employeeDao;
+    private final ObjectMapper mapper = new ObjectMapper();
+
+    private String exceptionSerializeObj(Exception e) throws JsonProcessingException {
+        return mapper.writeValueAsString(
+                ErrorImpl.builder().errorMsg(e.getClass().getSimpleName()).build());
+    }
 
     public EmployeeService(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
 
     public String getEmployee(int id) throws JsonProcessingException, DataAccessException {
-
         try {
-            return (new ObjectMapper()).writeValueAsString(employeeDao.get(id));
+            return mapper.writeValueAsString(employeeDao.get(id));
+        } catch (Exception e) {
+            return exceptionSerializeObj(e);
+        }
+    }
 
-        } catch (JsonProcessingException e) {
-            return (new ObjectMapper())
-                    .writeValueAsString(ErrorImpl.builder().errorMsg("JsonProcessingException").build());
-
-        } catch (DataAccessException e) {
-            return (new ObjectMapper())
-                    .writeValueAsString(ErrorImpl.builder().errorMsg("DataAccessException").build());
+    public String getAllEmployees() throws JsonProcessingException, DataAccessException {
+        try {
+            return mapper.writeValueAsString(employeeDao.getAll());
+        } catch (Exception e) {
+            return exceptionSerializeObj(e);
         }
     }
 }

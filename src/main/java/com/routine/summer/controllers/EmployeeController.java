@@ -20,4 +20,12 @@ public class EmployeeController {
     public String get(@PathVariable int id) throws JsonProcessingException {
         return employeeService.getEmployee(id);
     }
+
+    @RequestMapping(
+            value = "/employee/all",
+            method = RequestMethod.GET,
+            produces = "application/json")
+    public String getAll() throws JsonProcessingException {
+        return employeeService.getAllEmployees();
+    }
 }

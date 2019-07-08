@@ -2,6 +2,7 @@ package com.routine.summer.dao;
 
 import com.routine.summer.entities.Employee;
 import java.sql.ResultSet;
+import java.util.List;
 import oracle.sql.DATE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -39,5 +40,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public Employee get(int id) throws DataAccessException {
         final String sql = "SELECT * FROM employees WHERE employee_id = ?";
         return jdbcTemplate.queryForObject(sql, new Object[] {id}, mapper);
+    }
+
+    @Override
+    public List<Employee> getAll() throws DataAccessException {
+        final String sql = "SELECT * FROM employees";
+        return jdbcTemplate.query(sql, mapper);
     }
 }
