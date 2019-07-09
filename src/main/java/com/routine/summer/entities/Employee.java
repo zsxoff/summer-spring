@@ -3,26 +3,28 @@ package com.routine.summer.entities;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.routine.summer.entities.serialize.OracleDataToString;
 import lombok.Builder;
-import lombok.Data;
+import lombok.NonNull;
+import lombok.Value;
 import oracle.sql.DATE;
 
 @Builder(toBuilder = true)
-public @Data class Employee {
+public @Value class Employee {
 
     private int employeeId;
 
     private String firstName;
 
-    private String lastName;
+    @NonNull private String lastName;
 
-    private String email;
+    @NonNull private String email;
 
     private String phoneNumber;
 
+    @NonNull
     @JsonSerialize(using = OracleDataToString.class)
     private DATE hireDate;
 
-    private String jobId;
+    @NonNull private String jobId;
 
     private int salary;
 
