@@ -20,7 +20,7 @@ public class EmployeeController {
             method = RequestMethod.GET,
             produces = "application/json")
     public String get(@PathVariable int id) throws JsonProcessingException {
-        return employeeService.getEmployee(id);
+        return employeeService.get(id);
     }
 
     @RequestMapping(
@@ -28,7 +28,7 @@ public class EmployeeController {
             method = RequestMethod.GET,
             produces = "application/json")
     public String getAll() throws JsonProcessingException {
-        return employeeService.getAllEmployees();
+        return employeeService.getAll();
     }
 
     @RequestMapping(value = "/employees", method = RequestMethod.PUT, produces = "application/json")

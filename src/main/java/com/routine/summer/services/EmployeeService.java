@@ -18,8 +18,7 @@ public class EmployeeService {
         this.employeeDao = employeeDao;
     }
 
-    // TODO Rename to get
-    public String getEmployee(int id) throws JsonProcessingException, DataAccessException {
+    public String get(int id) throws JsonProcessingException, DataAccessException {
         try {
             return serializeRequest(employeeDao.get(id));
         } catch (Exception e) {
@@ -27,8 +26,7 @@ public class EmployeeService {
         }
     }
 
-    // TODO Rename to getAll
-    public String getAllEmployees() throws JsonProcessingException, DataAccessException {
+    public String getAll() throws JsonProcessingException, DataAccessException {
         try {
             return serializeRequest(employeeDao.getAll());
         } catch (Exception e) {
