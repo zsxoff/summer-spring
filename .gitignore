@@ -33,6 +33,3 @@ dataSources/
 ### VS Code ###
 .vscode/
 bin/
-
-### Local libs ###
-libs/
