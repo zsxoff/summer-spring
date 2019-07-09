@@ -34,5 +34,5 @@ dataSources/
 .vscode/
 bin/
 
-### Oracle JDBC ###
-ojdbc8-full/
+### Local libs ###
+libs/

@@ -43,8 +43,7 @@ dependencies {
             'org.projectlombok:lombok:1.18.8',
             'com.fasterxml.jackson.datatype:jackson-datatype-jdk8:2.9.3',
 
-            // Oracle JDBC (!!! locate in ./ojdbc8-full !!!)
-            files('ojdbc8-full/ojdbc8.jar')
+            fileTree('libs/') // for Oracle JDBC
     )
 
     developmentOnly(
