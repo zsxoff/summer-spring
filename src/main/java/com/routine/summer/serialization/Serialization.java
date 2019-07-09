@@ -1,13 +1,13 @@
-package com.routine.summer.services;
+package com.routine.summer.serialization;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.routine.summer.entities.ServiceError;
 
-class Serialization {
+public class Serialization {
 
-    static String serializeException(Exception e) throws JsonProcessingException {
+    public static String serializeException(Exception e) throws JsonProcessingException {
         return (new ObjectMapper().configure(SerializationFeature.WRAP_ROOT_VALUE, true))
                 .writer()
                 .withRootName("error")
@@ -18,7 +18,7 @@ class Serialization {
                                 .build());
     }
 
-    static String serializeRequest(Object o) throws JsonProcessingException {
+    public static String serializeRequest(Object o) throws JsonProcessingException {
         return (new ObjectMapper().configure(SerializationFeature.WRAP_ROOT_VALUE, true))
                 .writer()
                 .withRootName("request")
