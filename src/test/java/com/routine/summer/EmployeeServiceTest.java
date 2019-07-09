@@ -2,9 +2,7 @@ package com.routine.summer;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.routine.summer.controllers.EmployeeController;
 import com.routine.summer.services.EmployeeService;
 import org.junit.jupiter.api.Test;
@@ -19,11 +17,9 @@ import org.springframework.test.web.servlet.MockMvc;
 @TestPropertySource(locations = "classpath:application.properties")
 class EmployeeServiceTest {
 
-    @MockBean
-    EmployeeService employeeService;
+    @MockBean EmployeeService employeeService;
 
-    @Autowired
-    private MockMvc mockMvc;
+    @Autowired private MockMvc mockMvc;
 
     @Test
     void employeeServiceGetOne() throws Exception {
