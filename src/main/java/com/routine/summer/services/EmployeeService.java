@@ -1,10 +1,11 @@
 package com.routine.summer.services;
 
-import static com.routine.summer.services.Serialization.serializeException;
-import static com.routine.summer.services.Serialization.serializeRequest;
+import static com.routine.summer.serialization.Serialization.serializeException;
+import static com.routine.summer.serialization.Serialization.serializeRequest;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.routine.summer.dao.EmployeeDao;
+import com.routine.summer.entities.Employee;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ public class EmployeeService {
         this.employeeDao = employeeDao;
     }
 
+    // TODO Rename to get
     public String getEmployee(int id) throws JsonProcessingException, DataAccessException {
         try {
             return serializeRequest(employeeDao.get(id));
@@ -25,9 +27,18 @@ public class EmployeeService {
         }
     }
 
+    // TODO Rename to getAll
     public String getAllEmployees() throws JsonProcessingException, DataAccessException {
         try {
             return serializeRequest(employeeDao.getAll());
+        } catch (Exception e) {
+            return serializeException(e);
+        }
+    }
+
+    public String update(Employee employee) throws JsonProcessingException, DataAccessException {
+        try {
+            return serializeRequest(employeeDao.update(employee));
         } catch (Exception e) {
             return serializeException(e);
         }

@@ -48,4 +48,43 @@ public class EmployeeDaoImpl implements EmployeeDao {
         final String sql = "SELECT * FROM employees";
         return jdbcTemplate.query(sql, mapper);
     }
+
+    @Override
+    public Employee update(Employee employee) throws DataAccessException {
+        final String sql =
+                "UPDATE employees SET "
+                        + "FIRST_NAME = NVL(?, FIRST_NAME), "
+                        + "LAST_NAME = NVL(?, LAST_NAME), "
+                        + "EMAIL = NVL(?, EMAIL), "
+                        + "PHONE_NUMBER = NVL(?, PHONE_NUMBER), "
+                        + "HIRE_DATE = NVL(?, HIRE_DATE), "
+                        + "JOB_ID = NVL(?, JOB_ID), "
+                        + "SALARY = NVL(?, SALARY), "
+                        + "COMMISSION_PCT = NVL(?, COMMISSION_PCT), "
+                        + "MANAGER_ID = NVL(?, MANAGER_ID), "
+                        + "DEPARTMENT_ID = NVL(?, DEPARTMENT_ID) "
+                        + "WHERE employee_id = ?";
+
+        jdbcTemplate.update(
+                sql,
+                employee.getFirstName(),
+                employee.getLastName(),
+                employee.getEmail(),
+                employee.getPhoneNumber(),
+                employee.getHireDate(),
+                employee.getJobId(),
+                employee.getSalary(),
+                employee.getCommissionPct(),
+                employee.getManagerId(),
+                employee.getDepartmentId(),
+                employee.getEmployeeId());
+
+        return get(employee.getEmployeeId());
+    }
+
+    @Override
+    public void create(Employee employee) {}
+
+    @Override
+    public void delete(int id) {}
 }

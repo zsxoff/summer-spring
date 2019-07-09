@@ -10,12 +10,9 @@ public interface EmployeeDao {
 
     List<Employee> getAll() throws DataAccessException;
 
-    //        void create(T t);
-    //
-    //    void update(T t);
-    //
-    //    void delete(T t);
-    //
-    //    void delete(int id);
-    //
+    Employee update(Employee employee);
+
+    void create(Employee employee);
+
+    void delete(int id);
 }
