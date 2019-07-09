@@ -15,13 +15,13 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/employees/{id}", method = RequestMethod.GET, produces = "application/json")
-    public String get(@PathVariable int id) throws JsonProcessingException {
-        return employeeService.get(id);
+    public String select(@PathVariable int id) throws JsonProcessingException {
+        return employeeService.select(id);
     }
 
     @RequestMapping(value = "/employees/all", method = RequestMethod.GET, produces = "application/json")
-    public String getAll() throws JsonProcessingException {
-        return employeeService.getAll();
+    public String selectAll() throws JsonProcessingException {
+        return employeeService.selectAll();
     }
 
     @RequestMapping(value = "/employees", method = RequestMethod.POST, produces = "application/json")

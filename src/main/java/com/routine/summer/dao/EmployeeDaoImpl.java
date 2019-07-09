@@ -38,13 +38,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public Employee get(int id) throws DataAccessException {
+    public Employee select(int id) throws DataAccessException {
         final String sql = "SELECT * FROM employees WHERE employee_id = ?";
         return jdbcTemplate.queryForObject(sql, new Object[] {id}, mapper);
     }
 
     @Override
-    public List<Employee> getAll() throws DataAccessException {
+    public List<Employee> selectAll() throws DataAccessException {
         final String sql = "SELECT * FROM employees";
         return jdbcTemplate.query(sql, mapper);
     }
@@ -79,7 +79,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 employee.getDepartmentId(),
                 employee.getEmployeeId());
 
-        return get(employee.getEmployeeId());
+        return select(employee.getEmployeeId());
     }
 
     @Override
@@ -109,7 +109,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public Employee delete(int id) throws DataAccessException {
-        final Employee deletableEmployee = get(id);
+        final Employee deletableEmployee = select(id);
 
         final String sql = "DELETE FROM employees WHERE employee_id = ?";
         jdbcTemplate.update(sql, id);

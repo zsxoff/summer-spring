@@ -18,17 +18,17 @@ public class EmployeeService {
         this.employeeDao = employeeDao;
     }
 
-    public String get(int id) throws JsonProcessingException, DataAccessException {
+    public String select(int id) throws JsonProcessingException, DataAccessException {
         try {
-            return serializeRequest(employeeDao.get(id));
+            return serializeRequest(employeeDao.select(id));
         } catch (Exception e) {
             return serializeException(e);
         }
     }
 
-    public String getAll() throws JsonProcessingException, DataAccessException {
+    public String selectAll() throws JsonProcessingException, DataAccessException {
         try {
-            return serializeRequest(employeeDao.getAll());
+            return serializeRequest(employeeDao.selectAll());
         } catch (Exception e) {
             return serializeException(e);
         }

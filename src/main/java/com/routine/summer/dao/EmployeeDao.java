@@ -6,9 +6,9 @@ import org.springframework.dao.DataAccessException;
 
 public interface EmployeeDao {
 
-    Employee get(int id) throws DataAccessException;
+    Employee select(int id) throws DataAccessException;
 
-    List<Employee> getAll() throws DataAccessException;
+    List<Employee> selectAll() throws DataAccessException;
 
     Employee update(Employee employee) throws DataAccessException;
 
