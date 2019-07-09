@@ -41,4 +41,20 @@ public class EmployeeService {
             return serializeException(e);
         }
     }
+
+    public String create(Employee employee) throws JsonProcessingException, DataAccessException {
+        try {
+            return serializeRequest(employeeDao.create(employee));
+        } catch (Exception e) {
+            return serializeException(e);
+        }
+    }
+
+    public String delete(int id) throws JsonProcessingException, DataAccessException {
+        try {
+            return serializeRequest(employeeDao.delete(id));
+        } catch (Exception e) {
+            return serializeException(e);
+        }
+    }
 }

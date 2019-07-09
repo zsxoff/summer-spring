@@ -83,8 +83,37 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public void create(Employee employee) {}
+    public Employee create(Employee employee) throws DataAccessException {
+        final String sql =
+                "INSERT INTO employees ("
+                        + "EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE, JOB_ID, "
+                        + "SALARY, COMMISSION_PCT, MANAGER_ID, DEPARTMENT_ID) "
+                        + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        jdbcTemplate.update(
+                sql,
+                employee.getEmployeeId(),
+                employee.getFirstName(),
+                employee.getLastName(),
+                employee.getEmail(),
+                employee.getPhoneNumber(),
+                employee.getHireDate(),
+                employee.getJobId(),
+                employee.getSalary(),
+                employee.getCommissionPct(),
+                employee.getManagerId(),
+                employee.getDepartmentId());
+
+        return employee;
+    }
 
     @Override
-    public void delete(int id) {}
+    public Employee delete(int id) throws DataAccessException {
+        final Employee deletableEmployee = get(id);
+
+        final String sql = "DELETE FROM employees WHERE employee_id = ?";
+        jdbcTemplate.update(sql, id);
+
+        return deletableEmployee;
+    }
 }
