@@ -1,36 +1,60 @@
 package com.routine.summer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.routine.summer.entities.serialize.OracleDataToString;
-import lombok.Builder;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
+
+import java.util.Date;
+import javax.persistence.*;
+
+import lombok.Data;
 import lombok.NonNull;
-import lombok.Value;
-import oracle.sql.DATE;
 
-@Builder(toBuilder = true)
-public @Value class Employee {
+@Entity
+@Data
+@Table(name = "employees")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Employee {
+    public Employee() {
+    }
 
-    private int employeeId;
+    @Column(name = "EMPLOYEE_ID", nullable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer employeeId;
 
+    @Column(name = "FIRST_NAME")
     private String firstName;
 
-    @NonNull private String lastName;
+    @Column(name = "LAST_NAME")
+    @NonNull
+    private String lastName;
 
-    @NonNull private String email;
+    @Column(name = "EMAIL")
+    @NonNull
+    private String email;
 
+    @Column(name = "PHONE_NUMBER")
     private String phoneNumber;
 
+    @Column(name = "HIRE_Date")
+    @JsonSerialize(using = ToStringSerializer.class)
     @NonNull
-    @JsonSerialize(using = OracleDataToString.class)
-    private DATE hireDate;
+    private Date hireDate;
 
-    @NonNull private String jobId;
+    @Column(name = "JOB_ID")
+    @NonNull
+    private String jobId;
 
-    private int salary;
+    @Column(name = "SALARY")
+    private Float salary;
 
-    private int commissionPct;
+    @Column(name = "COMMISSION_PCT")
+    private Float commissionPct;
 
-    private int managerId;
+    @Column(name = "MANAGER_ID")
+    private Integer managerId;
 
-    private int departmentId;
+    @Column(name = "DEPARTMENT_ID")
+    private Integer departmentId;
 }

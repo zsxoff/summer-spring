@@ -1,9 +1,11 @@
 package com.routine.summer.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.routine.summer.entities.Employee;
 import com.routine.summer.services.EmployeeService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class EmployeeController {
@@ -14,28 +16,28 @@ public class EmployeeController {
         this.employeeService = service;
     }
 
-    @RequestMapping(value = "/employees/{id}", method = RequestMethod.GET, produces = "application/json")
-    public String select(@PathVariable int id) throws JsonProcessingException {
+    @RequestMapping(value = "/employees/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Employee select(@PathVariable int id) {
         return employeeService.select(id);
     }
 
-    @RequestMapping(value = "/employees/all", method = RequestMethod.GET, produces = "application/json")
-    public String selectAll() throws JsonProcessingException {
-        return employeeService.selectAll();
+    @RequestMapping(value = "/employees/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Employee> selectAll() {
+        return employeeService.findAll();
     }
 
-    @RequestMapping(value = "/employees", method = RequestMethod.POST, produces = "application/json")
-    public String create(@RequestBody Employee employee) throws JsonProcessingException {
+    @RequestMapping(value = "/employees", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Employee create(@RequestBody Employee employee) {
         return employeeService.create(employee);
     }
 
-    @RequestMapping(value = "/employees", method = RequestMethod.PUT, produces = "application/json")
-    public String update(@RequestBody Employee employee) throws JsonProcessingException {
+    @RequestMapping(value = "/employees", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Employee update(@RequestBody Employee employee) {
         return employeeService.update(employee);
     }
 
-    @RequestMapping(value = "/employees/{id}", method = RequestMethod.DELETE, produces = "application/json")
-    public String delete(@PathVariable int id) throws JsonProcessingException {
-        return employeeService.delete(id);
+    @RequestMapping(value = "/employees/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public void delete(@PathVariable int id) {
+        employeeService.delete(id);
     }
 }
