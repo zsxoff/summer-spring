@@ -85,6 +85,11 @@ spotless {
         googleJavaFormat()
         indentWithTabs(2)
         indentWithSpaces(4)
+
+        target project.fileTree(project.rootDir) {
+            include '**/*.java'
+            exclude 'src/main/java/com/routine/summer/controllers/*.java'
+        }
     }
 }
 
