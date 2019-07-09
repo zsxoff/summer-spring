@@ -27,7 +27,7 @@ export DB_PASSWORD='changeme'
 
 ## Сборка и запуск проекта
 
-### С помощью gradlew проекта
+#### С помощью gradlew проекта
 
 ```bash
 git clone https://github.com/zsxoff/summer
@@ -41,7 +41,7 @@ export DB_PASSWORD='changeme'
 
 Для сборки с помощью установленного локально Gradle следует заменить '*./gradlew*' на '*gradle*'.
 
-### С помощью Docker
+#### С помощью Docker
 
 Сборка контейнера с проектом осуществляется с помощью команды:
 
