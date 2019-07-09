@@ -10,7 +10,7 @@ import org.springframework.test.context.TestPropertySource;
 
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application.properties")
-class TestBaseController {
+class BaseControllerTest {
 
     @Autowired BaseController baseController;
 
