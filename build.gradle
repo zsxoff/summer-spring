@@ -91,7 +91,6 @@ spotless {
 
         target project.fileTree(project.rootDir) {
             include '**/*.java'
-            exclude 'src/main/java/com/routine/summer/controllers/*.java'
         }
     }
 }
