@@ -19,9 +19,11 @@ export DB_PASSWORD='changeme'
 ```
 
 ## Установка драйвера Oracle JDBC
-# 
-# 
-# 
+
+Перед началом сборки проекта необходимо скачать драйвер **Oracle Database 18c JDBC Driver** по ссылке:
+[https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/](https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/)
+
+Далее необходимо распаковать архив в папку *libs* проекта.
 
 ## Сборка и запуск проекта
 
