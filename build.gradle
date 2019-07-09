@@ -56,11 +56,12 @@ dependencies {
     implementation(
             'org.springframework.boot:spring-boot-starter-web:2.1.6.RELEASE',
             'org.springframework.boot:spring-boot-starter-jdbc:2.1.6.RELEASE',
+            'org.springframework.boot:spring-boot-starter-data-jpa:2.1.6.RELEASE'
     )
 
     testImplementation(
             'org.junit.jupiter:junit-jupiter-api:5.3.2',
-            'org.springframework.boot:spring-boot-starter-test:2.1.6.RELEASE'
+            'org.springframework.boot:spring-boot-starter-test:2.1.6.RELEASE',
     )
 
     testRuntimeOnly(
